@@ -3,9 +3,9 @@ package andrei.spring.springWebApp.demo.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
@@ -19,8 +19,14 @@ public class Book {
     private String pages;
 
     @ManyToMany
-    @JoinTable(name = "author book"m joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = "author_id")
-    private Set<Author> authors;
+    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id"))
+    private Set<Author> authors = new HashSet<>();
+
+    public Book(String title, String pages) {
+        this.title = title;
+        this.pages = pages;
+    }
 
     @Override
     public boolean equals(Object o) {
