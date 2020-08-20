@@ -52,7 +52,6 @@ public class Book {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", pages='" + pages + '\'' +
-                ", authors=" + authors +
                 '}';
     }
 }
